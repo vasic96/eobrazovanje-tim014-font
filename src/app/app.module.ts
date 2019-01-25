@@ -10,12 +10,16 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DokumentService } from './services/dokument.service';
 import { FormsModule } from '@angular/forms';
 import { NoviDokumentDialog } from './dialogs/novi.dokument.dialog';
+import { KorisniciComponent } from './korisnici/korisnici.component';
+import { StudentDialog } from './dialogs/student.dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     DokumentListComponent,
-    NoviDokumentDialog
+    NoviDokumentDialog,
+    KorisniciComponent,
+    StudentDialog
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { NoviDokumentDialog } from './dialogs/novi.dokument.dialog';
     FormsModule
 
   ],
-  entryComponents:[NoviDokumentDialog],
+  entryComponents:[NoviDokumentDialog,StudentDialog],
   providers: [DokumentService,HttpClient],
   bootstrap: [AppComponent]
 })

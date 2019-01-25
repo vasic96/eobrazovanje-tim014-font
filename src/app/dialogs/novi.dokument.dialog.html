@@ -12,7 +12,7 @@
         </div>
         <button mat-button (click)="fileInput.click()">
             <mat-icon>delete</mat-icon>
-            <span>Izaberi fajl</span>
+            <span>Izaberi fajl </span>
             <input #fileInput name="file" type="file" (change)="onFileInput($event.target.files)" style="display:none;"
                 ngModel />
         </button>
