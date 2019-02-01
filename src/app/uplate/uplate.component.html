@@ -1,0 +1,23 @@
+<mat-list class="container">
+  <h3 mat-subheader>Studenti</h3>
+  <mat-list-item *ngFor="let uplata of uplate">
+    <mat-icon mat-list-icon>
+      account_circle
+    </mat-icon>
+    <h4 mat-line>{{uplata.imePrezime}}</h4>
+    <h5 mat-line>{{uplata.svrhaUplate}}</h5>
+    <p mat-line>{{uplata.iznos}}  {{uplata.datumUplate | date:'shortDate'}}</p>
+    <span class="example-spacer"></span>
+    <button mat-icon-button color="primary">
+      <mat-icon aria-label="Example icon-button with a heart icon" (click)="openDialog('view',uplata)">fingerprint</mat-icon>
+    </button>
+    <button mat-icon-button color="primary">
+      <mat-icon aria-label="Example icon-button with a heart icon" (click)="openDialog('edit',uplata)">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary">
+      <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+<br>
+<button mat-flat-button color="primary" (click)="openDialog('add')">Nova uplata</button>    

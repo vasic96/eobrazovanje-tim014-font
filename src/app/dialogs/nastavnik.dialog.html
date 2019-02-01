@@ -1,10 +1,6 @@
 <h1 mat-dialog-title>Student</h1>
-<form #studentForm="ngForm" (submit)="forumSubmit(studentForm.value)">
+<form #nastavnikForm="ngForm" (submit)="forumSubmit(nastavnikForm.value)">
     <div mat-dialog-content>
-            <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="brojIndeksa" placeholder="Broj indeksa" [ngModel]="student.brojIndeksa">
-            </mat-form-field>
-            <br>
             <mat-form-field style="width:100%;">
                 <input [readonly]="mode=='view'" matInput name="korisnickoIme" placeholder="Korisnicko ime" [ngModel]="student.korisnickoIme">
             </mat-form-field>
@@ -37,6 +33,10 @@
                 <input [readonly]="mode=='view'" matInput name="mesto" placeholder="Mesto" [ngModel]="student.mesto">
             </mat-form-field>
             <br>
+            <mat-form-field style="width:100%;">
+                <input [readonly]="mode=='view'" matInput name="zvanje" placeholder="Zvanje" [ngModel]="student.zvanje">
+            </mat-form-field>
+            <br>
         <br>
 
 
@@ -44,7 +44,7 @@
     <div mat-dialog-actions>
 
 
-        <button type="submit" [disabled]="mode=='view' || !studentForm.valid" color="primary" mat-flat-button>
+        <button type="submit" [disabled]="mode=='view' || !nastavnikForm.valid" color="primary" mat-flat-button>
             Potvrdi
         </button>
         <span style="flex: 1 1 auto;"></span>

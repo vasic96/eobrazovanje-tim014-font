@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { NoviDokumentDialog } from './dialogs/novi.dokument.dialog';
 import { KorisniciComponent } from './korisnici/korisnici.component';
 import { StudentDialog } from './dialogs/student.dialog';
+import { NastavnikDialog } from './dialogs/nastavnik.dialog';
+import { UplateComponent } from './uplate/uplate.component';
+import { UplataDialog } from './dialogs/uplata.dialog';
+import { ObavezaComponent } from './obaveza/obaveza.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { StudentDialog } from './dialogs/student.dialog';
     DokumentListComponent,
     NoviDokumentDialog,
     KorisniciComponent,
-    StudentDialog
+    StudentDialog,
+    NastavnikDialog,
+    UplateComponent,
+    UplataDialog,
+    ObavezaComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,7 @@ import { StudentDialog } from './dialogs/student.dialog';
     FormsModule
 
   ],
-  entryComponents:[NoviDokumentDialog,StudentDialog],
+  entryComponents:[NoviDokumentDialog,StudentDialog,NastavnikDialog,UplataDialog],
   providers: [DokumentService,HttpClient],
   bootstrap: [AppComponent]
 })

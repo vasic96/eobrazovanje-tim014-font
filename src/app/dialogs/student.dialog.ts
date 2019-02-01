@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Student } from "../interface/Student";
+import { KorisnikService } from "../services/korisnik.service";
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Student } from "../interface/Student";
 export class StudentDialog implements OnInit{
 
     constructor(
+        public korisnikService:KorisnikService,
         public dialogRef:MatDialogRef<StudentDialog>,
         @Inject(MAT_DIALOG_DATA) public dialogData
     ){}
@@ -25,12 +27,19 @@ export class StudentDialog implements OnInit{
     }
 
     forumSubmit(formData:Student):void{
-
+        console.log(formData);
+        if(this.mode=="edit"){
+            formData.jmbg = this.student.jmbg
+        }
+        this.korisnikService.uploadStudent(formData,this.mode).subscribe(
+            success=> this.onNoClick("success"),
+            error => console.log("Nece nesto")
+        );
     }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-      }
+    onNoClick(result:string="none"): void {
+        this.dialogRef.close(result);
+    }
     
 
 }
