@@ -16,6 +16,7 @@ import { NastavnikDialog } from './dialogs/nastavnik.dialog';
 import { UplateComponent } from './uplate/uplate.component';
 import { UplataDialog } from './dialogs/uplata.dialog';
 import { ObavezaComponent } from './obaveza/obaveza.component';
+import { LoginDialog } from './dialogs/login.dialog';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ObavezaComponent } from './obaveza/obaveza.component';
     NastavnikDialog,
     UplateComponent,
     UplataDialog,
-    ObavezaComponent
+    ObavezaComponent,
+    LoginDialog
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { ObavezaComponent } from './obaveza/obaveza.component';
     FormsModule
 
   ],
-  entryComponents:[NoviDokumentDialog,StudentDialog,NastavnikDialog,UplataDialog],
+  entryComponents:[NoviDokumentDialog,StudentDialog,NastavnikDialog,UplataDialog,LoginDialog],
   providers: [DokumentService,HttpClient],
   bootstrap: [AppComponent]
 })
