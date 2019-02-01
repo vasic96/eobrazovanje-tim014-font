@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { from } from 'rxjs';
 import { MaterialModule } from './material.module';
 import { DokumentListComponent } from './dokument-list/dokument-list.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DokumentService } from './services/dokument.service';
 import { FormsModule } from '@angular/forms';
 import { NoviDokumentDialog } from './dialogs/novi.dokument.dialog';
@@ -17,6 +17,7 @@ import { UplateComponent } from './uplate/uplate.component';
 import { UplataDialog } from './dialogs/uplata.dialog';
 import { ObavezaComponent } from './obaveza/obaveza.component';
 import { LoginDialog } from './dialogs/login.dialog';
+import { TokenInterceptorService } from './security/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,11 @@ import { LoginDialog } from './dialogs/login.dialog';
 
   ],
   entryComponents:[NoviDokumentDialog,StudentDialog,NastavnikDialog,UplataDialog,LoginDialog],
-  providers: [DokumentService,HttpClient],
+  providers: [DokumentService,HttpClient,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
