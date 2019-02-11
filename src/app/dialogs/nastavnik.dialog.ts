@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Nastavnik } from "../interface/Nastavnik";
+import { KorisnikService } from "../services/korisnik.service";
 
 @Component({
     selector: 'nastavnik.dialog',
@@ -10,21 +11,32 @@ export class NastavnikDialog implements OnInit{
 
     constructor(
         public dialogRef:MatDialogRef<NastavnikDialog>,
-        @Inject(MAT_DIALOG_DATA) public dialogData
+        @Inject(MAT_DIALOG_DATA) public dialogData,
+        private korisnikService:KorisnikService
     ){}
 
-    student:Nastavnik;
+    nastavnik:Nastavnik;
     mode:string = "view";
 
     ngOnInit(): void {
         console.log(this.dialogData)
-        this.student = this.dialogData.nastavnik;
+        this.nastavnik = this.dialogData.nastavnik;
         this.mode = this.dialogData.mode;
 
     }
 
     forumSubmit(formData:Nastavnik):void{
-
+        if(this.mode=="edit"){
+             formData.jmbg=this.nastavnik.jmbg;
+        }
+        this.korisnikService.uploadNastavnik(formData,this.mode).subscribe(
+            resoult=>{
+                this.dialogRef.close("success");
+            },
+            error=>{
+                console.log(error);
+            }
+        )
     }
 
     onNoClick(): void {

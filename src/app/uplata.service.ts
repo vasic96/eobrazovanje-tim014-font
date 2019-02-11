@@ -13,6 +13,10 @@ export class UplataService {
     return this._http.get<Uplata[]>("/api/uplate");
   }
 
+  deleteUplata(id:number){
+    return this._http.delete('api/uplata/'+id);
+  }
+
   dodajUplatu(mode:string, uplata:Uplata){
     if(mode=="add"){
     return this._http.post("/api/uplata",uplata);

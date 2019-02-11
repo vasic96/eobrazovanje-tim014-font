@@ -1,0 +1,50 @@
+<mat-tab-group mat-align-tabs="center" *ngIf="!idNotFound">
+  <mat-tab label="Studenti">
+
+    <mat-list class="container">
+      <h3 mat-subheader>Studenti</h3>
+      <mat-list-item *ngFor="let student of studenti">
+        <mat-icon mat-list-icon>
+          account_circle
+        </mat-icon>
+        <h4 mat-line>{{student.brojIndeksa}}</h4>
+        <p mat-line>{{student.ime}}  {{student.prezime}}</p>
+        <span class="example-spacer"></span>
+        <button mat-icon-button color="primary">
+          <mat-icon (click)="deletePohadja(student.jmbg)" aria-label="Example icon-button with a heart icon">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+
+    <br>
+
+    <button mat-flat-button color="primary" (click)="openStudDialog()">Novo pohadjanje</button>    
+
+  </mat-tab>
+  <mat-tab label="Nastavnici">
+    
+    <mat-list class="container">
+      <h3 mat-subheader>Nastavnici</h3>
+      <mat-list-item *ngFor="let nastavnik of  nastavnici">
+        <mat-icon mat-list-icon>
+          book
+        </mat-icon>
+        <h4 mat-line>{{nastavnik.zvanje}}</h4>
+        <p mat-line>{{nastavnik.ime}}  {{nastavnik.prezime}}</p>
+        <span class="example-spacer"></span>
+        <button mat-icon-button color="primary">
+          <mat-icon (click)="deletePredaje(nastavnik.jmbg)" aria-label="Example icon-button with a heart icon">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+
+    <br>
+
+    <button mat-flat-button color="primary" (click)="openNastDialog()">Novi nastavnik</button>   
+  </mat-tab>
+</mat-tab-group>
+
+<br>
+<div *ngIf="idNotFound">
+  Nesto nije u redu!
+</div>

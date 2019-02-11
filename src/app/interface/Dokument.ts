@@ -3,5 +3,6 @@ export interface Dokument {
     naziv:string,
     tipDokumenta:string,
     downloadUri:string,
-    brojIndeksa:string
+    brojIndeksa:string,
+    imePrezime:string
 }

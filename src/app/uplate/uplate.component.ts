@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { UplataDialog } from '../dialogs/uplata.dialog';
 import { KorisnikService } from '../services/korisnik.service';
 import { Student } from '../interface/Student';
+import { AuthenticationService } from '../security/authentication.service';
 
 @Component({
   selector: 'app-uplate',
@@ -15,13 +16,20 @@ export class UplateComponent implements OnInit {
 
   constructor(public uplataService:UplataService,
               private dialog:MatDialog,
-              private korisnikService:KorisnikService) { }
+              private korisnikService:KorisnikService,
+              private authService:AuthenticationService) { }
 
   uplate:Uplata[];
   studenti:Student[];
+  loggedIn:boolean=false;
+  role:string;
 
   ngOnInit() {
-    this.loadUplate();
+    this.loggedIn=this.authService.isLoggedIn();
+    this.role=this.authService.getRole();
+    if(this.role!="nastavnik"){
+      this.loadUplate();
+    }
   }
 
   loadUplate():void{
@@ -51,6 +59,15 @@ export class UplateComponent implements OnInit {
       success=> this.studenti = success,
       error=> console.log("Greska prilikom ucitavanja studenata")
     )
+  }
+
+  deleteUplata(uplata:Uplata){
+    if(confirm("Da li zelite da izbrisete uplatu?")){
+      this.uplataService.deleteUplata(uplata.id).subscribe(
+        success=>this.loadUplate(),
+        error=>console.log(error)
+      )
+    }
   }
 
   

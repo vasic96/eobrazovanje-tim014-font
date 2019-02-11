@@ -22,7 +22,7 @@
             </mat-form-field>
             <br>
             <mat-form-field *ngIf="mode=='edit' || mode=='add'" style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="lozinka" placeholder="Lozinka" [ngModel]="student.lozinka">
+                <input [readonly]="mode=='view'" type="password" matInput name="lozinka" placeholder="Lozinka" [ngModel]="student.lozinka">
             </mat-form-field>
             <br *ngIf="mode=='edit' || mode=='add'">
             <mat-form-field style="width:100%;">

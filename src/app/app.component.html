@@ -1,11 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-  <button mat-button color="accent">Predmeti</button>
-  <button mat-button color="accent">Uplate</button>
-  <button mat-button color="accent">Dokumenti</button>
-  <button mat-button color="accent">Korisnici</button>
+  <button mat-button routerLink="/predmeti" color="accent">Predmeti</button>
+  <button *ngIf="role!='nastavnik'" mat-button routerLink="/uplate" color="accent">Uplate</button>
+  <button *ngIf="role!='nastavnik'" mat-button routerLink="/dokumenti" color="accent">Dokumenti</button>
+  <button *ngIf="role=='administrator'" mat-button routerLink="/korisnici" color="accent">Korisnici</button>
+  <button mat-button routerLink="/obaveza" color="accent">Obaveze</button>
+
   <span class="fil-space"></span>
-  <button mat-raised-button color="accent" (click)="openLoginDialog()">Prijava</button>
+    <p>{{currentUser?.username}}</p>
+    &nbsp;&nbsp;
+  <button *ngIf="!loggedIn" mat-raised-button color="accent" (click)="openLoginDialog()">Prijava</button>
+  <button *ngIf="loggedIn" mat-raised-button color="accent" [matMenuTriggerFor]="menu">Opcije</button>
+<mat-menu  #menu="matMenu">
+  <button  mat-button color="primary" (click)="promenaLozinke()">Promena lozinke</button>
+  <br>
+  <button  mat-button color="primary" (click)="odjava()">Odjava</button>
+</mat-menu>
 
 </mat-toolbar>
 <router-outlet></router-outlet>

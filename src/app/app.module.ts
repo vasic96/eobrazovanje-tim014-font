@@ -18,6 +18,13 @@ import { UplataDialog } from './dialogs/uplata.dialog';
 import { ObavezaComponent } from './obaveza/obaveza.component';
 import { LoginDialog } from './dialogs/login.dialog';
 import { TokenInterceptorService } from './security/token-interceptor.service';
+import { ObavezaDialog } from './dialogs/obaveza.dialog';
+import { PredmetComponent } from './predmet/predmet.component';
+import { PredmetInfoComponent } from './predmet-info/predmet-info.component';
+import { PohadjaDialog } from './dialogs/pohadja.dialog';
+import { PredmetDialog } from './predmet/predmet.dialog';
+import { PasswordDialog } from './dialogs/password.dialog';
+import { PredajeDialog } from './dialogs/predaje.dialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,14 @@ import { TokenInterceptorService } from './security/token-interceptor.service';
     UplateComponent,
     UplataDialog,
     ObavezaComponent,
-    LoginDialog
+    LoginDialog,
+    ObavezaDialog,
+    PredmetComponent,
+    PredmetInfoComponent,
+    PohadjaDialog,
+    PredmetDialog,
+    PasswordDialog,
+    PredajeDialog
   ],
   imports: [
     BrowserModule,
@@ -39,9 +53,9 @@ import { TokenInterceptorService } from './security/token-interceptor.service';
     MaterialModule,
     HttpClientModule,
     FormsModule
-
   ],
-  entryComponents:[NoviDokumentDialog,StudentDialog,NastavnikDialog,UplataDialog,LoginDialog],
+  entryComponents:[NoviDokumentDialog,StudentDialog,PredmetDialog,NastavnikDialog,UplataDialog,LoginDialog,ObavezaDialog,
+  PohadjaDialog,PasswordDialog,PredajeDialog],
   providers: [DokumentService,HttpClient,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,

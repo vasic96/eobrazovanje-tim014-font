@@ -2,39 +2,39 @@
 <form #nastavnikForm="ngForm" (submit)="forumSubmit(nastavnikForm.value)">
     <div mat-dialog-content>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="korisnickoIme" placeholder="Korisnicko ime" [ngModel]="student.korisnickoIme">
+                <input [readonly]="mode=='view'" matInput name="korisnickoIme" placeholder="Korisnicko ime" [ngModel]="nastavnik.korisnickoIme">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="ime" placeholder="Ime" [ngModel]="student.ime">
+                <input [readonly]="mode=='view'" matInput name="ime" placeholder="Ime" [ngModel]="nastavnik.ime">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="prezime" placeholder="Prezime" [ngModel]="student.prezime">
+                <input [readonly]="mode=='view'" matInput name="prezime" placeholder="Prezime" [ngModel]="nastavnik.prezime">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="email" placeholder="Email" [ngModel]="student.email">
+                <input [readonly]="mode=='view'" matInput name="email" placeholder="Email" [ngModel]="nastavnik.email">
             </mat-form-field>
             <br>
-            <mat-form-field *ngIf="mode=='edit' || mode=='add'" style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="lozinka" placeholder="Lozinka" [ngModel]="student.lozinka">
+            <mat-form-field *ngIf="mode=='add'" style="width:100%;">
+                <input  *ngIf="mode=='add'" type="password" matInput name="lozinka" placeholder="Lozinka" [ngModel]="nastavnik.lozinka">
             </mat-form-field>
             <br *ngIf="mode=='edit' || mode=='add'">
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="ulicaBroj" placeholder="Ulica i broj" [ngModel]="student.ulicaBroj">
+                <input [readonly]="mode=='view'" matInput name="ulicaBroj" placeholder="Ulica i broj" [ngModel]="nastavnik.ulicaBroj">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="postanskiBroj" placeholder="Postanski broj" [ngModel]="student.postanskiBroj">
+                <input [readonly]="mode=='view'" matInput name="postanskiBroj" placeholder="Postanski broj" [ngModel]="nastavnik.postanskiBroj">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="mesto" placeholder="Mesto" [ngModel]="student.mesto">
+                <input [readonly]="mode=='view'" matInput name="mesto" placeholder="Mesto" [ngModel]="nastavnik.mesto">
             </mat-form-field>
             <br>
             <mat-form-field style="width:100%;">
-                <input [readonly]="mode=='view'" matInput name="zvanje" placeholder="Zvanje" [ngModel]="student.zvanje">
+                <input [readonly]="mode=='view'" matInput name="zvanje" placeholder="Zvanje" [ngModel]="nastavnik.zvanje">
             </mat-form-field>
             <br>
         <br>

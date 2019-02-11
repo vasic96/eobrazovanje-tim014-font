@@ -1,0 +1,12 @@
+.content1 {
+    width: 80%;
+    margin: auto;
+}
+
+table{
+    width: 100%;
+}
+.optionTd{
+    float: right;
+    right: 0px;
+} 

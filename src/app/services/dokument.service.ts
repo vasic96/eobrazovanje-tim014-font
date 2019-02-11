@@ -25,6 +25,7 @@ export class DokumentService {
   }
 
   uploadDoc(document){
+    console.log(document);
     let formData: FormData = new FormData();
     formData.append('file',document.file,document.file.name)
     formData.append('dokument',JSON.stringify(document.dokument));

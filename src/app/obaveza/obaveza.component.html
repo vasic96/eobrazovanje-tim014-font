@@ -1,3 +1,26 @@
-<p>
-  obaveza works!
-</p>
+<div *ngIf="loggedIn">
+<mat-list class="container">
+    <h3 mat-subheader>Obaveze</h3>
+    <mat-list-item *ngFor="let obaveza of obaveze">
+      <mat-icon mat-list-icon>
+        account_circle
+      </mat-icon>
+      <h4 mat-line>{{obaveza.imePrezime}}</h4>
+      <h5 mat-line>{{obaveza.predmetNaziv}}</h5>
+      <p mat-line>{{obaveza.polozen}}  {{obaveza.datumObaveze | date:'shortDate'}}</p>
+      <span class="example-spacer"></span>
+      <button mat-icon-button color="primary">
+        <mat-icon aria-label="Example icon-button with a heart icon" (click)="openDialog('edit',uplata)">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon (click)="deleteObaveza(obaveza)" aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      </button>
+      <button [disabled]="obaveza.polozen" mat-icon-button color="primary">
+        <mat-icon (click)="poloziPredmet(obaveza.id)" aria-label="Example icon-button with a heart icon">done_outline</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+  <br>
+
+<button [disabled]="role!='adminstrator'" mat-flat-button color="primary" (click)="openDialog('add')">Nova obaveza</button>
+</div>

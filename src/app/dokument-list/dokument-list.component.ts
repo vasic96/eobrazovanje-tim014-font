@@ -6,6 +6,9 @@ import { SnackBarService } from '../services/snack-bar.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { NoviDokumentDialog } from '../dialogs/novi.dokument.dialog';
+import { Student } from '../interface/Student';
+import { KorisnikService } from '../services/korisnik.service';
+import { AuthenticationService } from '../security/authentication.service';
 
 @Component({
   selector: 'app-dokument-list',
@@ -16,13 +19,21 @@ export class DokumentListComponent implements OnInit {
 
   constructor(private dokumentService:DokumentService,
               private snackBarService:SnackBarService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private korisnikService:KorisnikService,
+              private authService:AuthenticationService) { }
 
   dokumenti:Dokument[];
   dokumentToUpload:File = null;
+  studenti:Student[];
+  isLoggedIn:boolean=false;
+  role:string="notLoggedIn";
 
   ngOnInit() {
+    this.isLoggedIn=this.authService.isLoggedIn();
+    this.role = this.authService.getRole();
     this.ucitavanjeDokumenata();
+    this.ucitavanjeStudenata();
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(NoviDokumentDialog, {
@@ -56,6 +67,15 @@ export class DokumentListComponent implements OnInit {
       },
       error=> console.log(error)
     )
+  }
+
+  ucitavanjeStudenata(){
+    this.korisnikService.getStudents().subscribe(
+      success=>{
+        this.studenti = success;
+      },
+      error=> console.log(error)
+    );
   }
 
   deleteDoc(id:number){

@@ -5,22 +5,19 @@ import { KorisnikService } from "../services/korisnik.service";
 import { UplataService } from "../uplata.service";
 import { AuthenticationService } from "../security/authentication.service";
 import { LoginData } from "../interface/LoginData";
-import { SnackBarService } from "../services/snack-bar.service";
+import { PasswordChange } from "../interface/PasswordChange";
 
 
 
 @Component({
-    selector: 'login.dialog',
-    templateUrl: 'login.dialog.html'
+    selector: 'password.dialog',
+    templateUrl: 'password.dialog.html'
 })
-export class LoginDialog implements OnInit{
+export class PasswordDialog implements OnInit{
 
     constructor(
         public korisnikService:KorisnikService,
-        public uplataService:UplataService,
-        public dialogRef:MatDialogRef<LoginDialog>,
-        private authService:AuthenticationService,
-        private snackBar:SnackBarService
+        public dialogRef:MatDialogRef<PasswordDialog>,
     ){}
 
     ngOnInit(): void {
@@ -29,11 +26,10 @@ export class LoginDialog implements OnInit{
     }
 
 
-    forumSubmit(formData:LoginData):void{
-        this.authService.login(formData).subscribe(
-            success=> {this.dialogRef.close("success")
-            location.reload()},
-            error=>this.snackBar.openSnackBar("Pogresan username/password","ok")
+    submitPassword(formData:PasswordChange):void{
+        this.korisnikService.changePassowrd(formData).subscribe(
+            success=>this.dialogRef.close("success"),
+            error=>console.log(error)
         )
     }
 

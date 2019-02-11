@@ -4,6 +4,7 @@ import { JwtUtilsService } from './jwt-utils.service';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { LoginData } from '../interface/LoginData';
+import { JsonPipe } from '@angular/common';
 
 
 @Injectable({
@@ -39,6 +40,13 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem('currentUser');
+  }
+
+  getRole():string{
+    if(this.isLoggedIn()){
+      return JSON.parse(localStorage.getItem('currentUser')).role;
+    }
+    return "notLoggedIn";
   }
 
   isLoggedIn(): boolean {
