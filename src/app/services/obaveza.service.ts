@@ -19,11 +19,11 @@ export class ObavezaService {
   }
   
   poloziPredmet(id){
-    return this._http.get('api/obaveza/polozen/'+id)
+    return this._http.get('/api/obaveza/polozen/'+id)
   }
 
   deleteObaveza(id:number){
-    return this._http.delete('api/obaveza/'+id);
+    return this._http.delete('/api/obaveza/'+id);
   }
 
 

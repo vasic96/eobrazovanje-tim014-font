@@ -65,7 +65,7 @@ export class KorisnikService {
   }
 
   changePassowrd(data:PasswordChange){
-    return this._http.post('api/lozinka',data);
+    return this._http.post('/api/lozinka',data);
   }
   
 

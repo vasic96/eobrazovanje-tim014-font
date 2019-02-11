@@ -15,26 +15,26 @@ export class PredmetService {
   }
 
   getAllPaged(page:number,pageSize:number){
-    return this._http.get<Page>('api/predmeti/paged?page='+page+'&direction=ASC&order=opis&size='+pageSize);
+    return this._http.get<Page>('/api/predmeti/paged?page='+page+'&direction=ASC&order=opis&size='+pageSize);
   }
 
   postPredmet(mode:string,predmet:Predmet){
     if(mode=="add"){
-      return this._http.post("api/predmet",predmet);
+      return this._http.post("/api/predmet",predmet);
     } else if(mode=="edit"){
-      return this._http.put("api/predmet/"+predmet.predmetId,predmet);
+      return this._http.put("/api/predmet/"+predmet.predmetId,predmet);
     }
   }
 
   deletePredmet(predmet:Predmet){
-    return this._http.delete('api/predmet/'+predmet.predmetId);
+    return this._http.delete('/api/predmet/'+predmet.predmetId);
   }
 
   getAllPohadja(){
-    return this._http.get<Predmet[]>('api/predmeti/pohadja');
+    return this._http.get<Predmet[]>('/api/predmeti/pohadja');
   }
 
   getAllPredaje(){
-    return this._http.get<Predmet[]>('api/predmeti/predaje');
+    return this._http.get<Predmet[]>('/api/predmeti/predaje');
   }
 }

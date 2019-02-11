@@ -13,7 +13,7 @@ export class DokumentService {
 
 
   sviDokumenti(){
-    return this._http.get<Dokument[]>("api/dokument/all")
+    return this._http.get<Dokument[]>("/api/dokument/all")
   }
 
   downloadFile(fileName:string){
@@ -29,7 +29,7 @@ export class DokumentService {
     let formData: FormData = new FormData();
     formData.append('file',document.file,document.file.name)
     formData.append('dokument',JSON.stringify(document.dokument));
-    return this._http.post("api/uploadDoc",formData);
+    return this._http.post("/api/uploadDoc",formData);
   }
 
 }
